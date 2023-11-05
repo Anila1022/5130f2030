@@ -1,0 +1,91 @@
+*
+{ margin: 0;
+padding: 0;
+}
+
+.header {
+    padding: 60px;
+    text-align: right;
+    background: rgb(74, 68, 66);
+    color: rgb(217, 194, 194);
+    font-size: 30px;
+  } 
+  .image {
+    height: 270px;
+    width: 190px;
+    margin-top: -215px;
+    box-shadow: 2px 2px 2px 2px #828282;
+}
+.container {
+  position: fixed; 
+  width: 50%;
+  max-width: 30px;
+}
+  
+  
+.div_sam
+{
+    text-align: center; 
+    font-size: 50px;
+    color: white;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    width:420px;
+}
+
+.one
+{
+    background-color:rgb(166, 190, 166);
+      position:inherit;
+    float: left;  
+}
+.two
+{
+    background-color:rgb(186, 168, 130);
+    position:inherit;
+    float: left;
+}
+.three
+{
+    background-color: #fdfdfd;
+    position:inherit;
+    float: right;
+}
+.centered {
+  position: absolute;
+  top: 450px;
+  left: 0px;
+  transform: translate(20%, -50%);
+  text-align: left;
+}
+
+.centered img {
+  width: 230px;
+  border-radius: 50%;
+}
+.center {
+  position: absolute;
+  top: 450px;
+  left: 270px;
+  transform: translate(20%, -50%);
+  text-align: left;
+}
+.center img {
+  width: 235px;
+  border-radius: 60%;
+}
+.edge {
+  position: absolute;
+  top: 450px;
+  left: 490px;
+  transform: translate(20%, -50%);
+  text-align: left;
+}
+.edge img {
+  max-width: 235px;
+  border-radius: 60%;
+} 
+
