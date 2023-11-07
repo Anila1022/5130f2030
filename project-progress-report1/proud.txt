@@ -1,0 +1,6 @@
+This week, I've started making a website along with my teammates and developed the home page of our website. Although it is not completely done, I'm proud of the work we've done by creating a html page, a stylesheet to support the html page, an animation file i.e., a js filerequired for the animation. We've created the page with the following tabs: 
+-> Home
+-> Leasing
+-> Buying
+-> Comparision
+-> Contact
