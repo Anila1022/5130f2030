@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+</head>
+<body>
+    <form id="myForm">
+        Email: <input type="text" name="email" id="email"><br><br>
+        Phone Number: <input type="text" name="phone" id="phone"><br><br>
+        URL: <input type="text" name="url" id="url"><br><br>
+        <input type="submit" value="Submit" onclick="validateForm()">
+    </form>
+
+    <script>
+        function validateForm() {
+            const emailValue = document.getElementById('email').value;
+            const phoneValue = document.getElementById('phone').value;
+            const urlValue = document.getElementById('phone').value;
+
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const phoneRegex = /(\+\d{1,2}\s?)?(\(\d{3}\)|\d{3})[\s.-]?\d{3}[\s.-]?\d{4}/;
+            const urlRegex = /^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,3}){1,2}$/;
+
+            if (!emailRegex.test(emailValue)) {
+                alert('Email format is incorrect!');
+            }
+
+            if (!phoneRegex.test(phoneValue)) {
+                alert('Phone number format is incorrect!');
+            }
+
+            if (!urlRegex.test(urlValue)) {
+                alert('URL format is incorrect!');
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
