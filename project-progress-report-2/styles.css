@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('car.jpg');
+    background-size: 200px 100px;
+    background-position: right;
+    background-repeat: no-repeat
+    color: white;
+}
+
+header {
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin: 20px 0;
+}
+
+.content-box {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.calculator {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #F08080;
+}
+
+.calculator input,
+.calculator select,
+.calculator button {
+    margin-top: 10px;
+    padding: 10px;
+    width: 90%;
+    display: block;
+}
+
+#leaseResults,
+#buyResults {
+    margin-top: 10px;
+    color: blue; /* Output color for both calculators */
+}
