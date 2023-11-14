@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Authentication</title>
+
+    <script>
+        function signup() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (!isValidEmail(email)) {
+                alert('Invalid email format');
+                return;
+            }
+
+            // Send data to the server for signup
+            // Example: fetch('/signup', { method: 'POST', body: JSON.stringify({ email, password }), headers: { 'Content-Type': 'application/json' }})
+
+            // For demonstration purposes, let's just log the values
+            console.log('Email:', email);
+            console.log('Password:', password);
+
+            // Initiate email verification
+            initiateEmailVerification(email);
+        }
+
+        function login() {
+            const loginEmail = document.getElementById('loginEmail').value;
+            const loginPassword = document.getElementById('loginPassword').value;
+
+            if (!isValidEmail(loginEmail)) {
+                alert('Invalid email format');
+                return;
+            }
+
+            // Send data to the server for login
+            // Example: fetch('/login', { method: 'POST', body: JSON.stringify({ email: loginEmail, password: loginPassword }), headers: { 'Content-Type': 'application/json' }})
+
+            // For demonstration purposes, let's just log the values
+            console.log('Login Email:', loginEmail);
+            console.log('Login Password:', loginPassword);
+        }
+
+        function guestAccess() {
+            alert('Guest access');
+        }
+
+        function initiateEmailVerification(email) {
+            // Send a request to the server to initiate email verification
+            // Example: fetch('/initiate-verification', { method: 'POST', body: JSON.stringify({ email }), headers: { 'Content-Type': 'application/json' }})
+            alert('Verification email sent. Please check your email to complete the registration.');
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function getUserLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+
+                        alert(`Your location: Latitude ${latitude}, Longitude ${longitude}`);
+                    },
+                    (error) => {
+                        console.error(`Error getting location: ${error.message}`);
+                    }
+                );
+            } else {
+                alert("Geolocation is not supported by your browser");
+            }
+        }
+
+        function getUserLocation() {
+            if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        async (position) => {
+                            const latitude = position.coords.latitude;
+                            const longitude = position.coords.longitude;
+
+                            alert(`Your location: Latitude ${latitude}, Longitude ${longitude}`);
+
+                            try {
+                                const weatherResponse = await fetch(`/getWeather?latitude=${latitude}&longitude=${longitude}`);
+                                const weatherData = await weatherResponse.json();
+
+                                alert(`Current weather: ${weatherData.weather[0].description}`);
+                            } catch (error) {
+                                console.error(`Error getting weather data: ${error.message}`);
+                                alert('Error getting weather data');
+                            }
+                        },
+                        (error) => {
+                            console.error(`Error getting location: ${error.message}`);
+                        }
+                    );
+            } else {
+                    alert("Geolocation is not supported by your browser");
+            }
+        }
+    </script>
+
+    </script>
+</head>
+<body>
+    <h1>User Authentication</h1>
+
+    <!-- Sign Up Form -->
+    <form id="signupForm" onsubmit="event.preventDefault(); signup();">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <!-- Sign In Form -->
+    <form id="loginForm" onsubmit="event.preventDefault(); login();">
+        <label for="loginEmail">Email:</label>
+        <input type="email" id="loginEmail" required>
+
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" required>
+
+        <button type="submit">Sign In</button>
+    </form>
+
+    <!-- Guest Access -->
+    <button onclick="guestAccess()">Continue as Guest</button>
+
+    <!-- Get Location Button -->
+    <button onclick="getUserLocation()">Get Location</button>
+</body>
+</html>
