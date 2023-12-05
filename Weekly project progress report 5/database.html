@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Database Data</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function getData() {
+            $.ajax({
+                url: "display_feedback.php",
+                type: "GET",
+                success: function (feedbackResponse) {
+                    $("#feedbackData").html(JSON.stringify(feedbackResponse));
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error: " + error);
+                }
+            });
+
+            $.ajax({
+                url: "display_users.php", 
+                type: "GET",
+                success: function (usersResponse) {
+                    $("#userData").html(JSON.stringify(usersResponse));
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error: " + error);
+                }
+            });
+        }
+
+        function updateUser(userId) {
+            let userData = {
+                id: userId,
+                username: $(`#username_${userId}`).val(),
+                email: $(`#email_${userId}`).val(),
+                phone: $(`#phone_${userId}`).val(),
+                full_name: $(`#full_name_${userId}`).val()
+            };
+
+            $.ajax({
+                url: "edit_user.php",
+                type: "POST",
+                data: userData,
+                success: function (response) {
+                    $("#message").html("User updated successfully");
+                    getData(); // Reload data
+                },
+                error: function (xhr, status, error) {
+                    console.log("Error: " + error);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            getData();
+        });
+
+    </script>
+</head>
+<body>
+    <h1>Welcome to our Database Data</h1>
+
+    <p id="message"></p>
+
+    <h2>Current Feedback Data:</h2>
+    <pre id="feedbackData"></pre>
+
+    <h2>Current User Data:</h2>
+    <pre id="userData"></pre>
+</body>
+</html>
